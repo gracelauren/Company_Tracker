@@ -1,4 +1,4 @@
-<h1>Update information for <%=@project.name() %></h1>
+<h1>Update information for <%=@project.name() %>. You can either update one field or both.</h1>
 
 <form action="/projects/<%= @project.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">

@@ -13,7 +13,7 @@
 
 <% if @division.employees().any?() %>
 <h3>Employees for <%= @division.name() %>:</h3>
-<h5>Click on the employee to edit their information or remove them from <%= @division.name() %>'s employee list.</h5>
+<h5>Click on the employee to view their projects for the <%= @division.name() %> division.</h5>
 
 <ul>
   <% @division.employees().each() do |employee| %>
