@@ -2,12 +2,12 @@ require('spec_helper')
 
 describe(Project) do
 
-  describe('#employee_id') do
-    it('returns the id of the employee who is working on that project') do
+  describe('#division_id') do
+    it('returns the id of the project for each division') do
       test_division = Division.create({:name => "test_division"})
       employee1 = Employee.create({:name => "Philip", :division_id => test_division.id})
-      project1 = Project.create({:name => "Project X", :description => "learning databases", :employee_id => employee1.id})
-      expect(project1.employee_id()).to(eq(employee1.id()))
+      project1 = Project.create({:name => "Project X", :description => "learning databases"})
+      expect(project1.division_id()).to(eq(test_division.id()))
     end
   end
 

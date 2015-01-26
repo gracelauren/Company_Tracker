@@ -88,6 +88,16 @@ delete("/employees/:id") do
   redirect(url)
 end
 
+
+post("/employees_index") do
+  name = params.fetch("name").split.map(&:capitalize).join(' ')
+  description = params.fetch("description")
+  division_id = params.fetch("division_id").to_i()
+  project = Project.create({:name => name, :description => description, :division_id => division_id})
+  @division = Division.find(division_id)
+  redirect("/")
+end
+
 post("/projects") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")

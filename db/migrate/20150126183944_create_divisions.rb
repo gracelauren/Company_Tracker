@@ -5,5 +5,6 @@ class CreateDivisions < ActiveRecord::Migration
     end
 
     add_column(:employees, :division_id, :integer)
+    add_column(:projects, :division_id, :integer)
   end
 end
