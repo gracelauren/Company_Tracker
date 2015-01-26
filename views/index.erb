@@ -1,7 +1,37 @@
+<h1>Welcome to your Employee Tracker Database</h1>
 
 
-<% @employees.each() do |employee| %>
-<li><%= employee.name %>
-  <a href="/employees/<% employee.id() %>/edit">
-    Update this employee's name</a></li>
+<form action="/divisions" method="post">
+  <label for="name">Please a division to your company:</label>
+  <input id="name" name="name" type="text">
+
+  <button class='button' type="submit">Add Division</button>
+</form>
+
+<p> Add a employee to a division:</p>
+
+<form action="/employees_index" method="post">
+  <label for="division_id">Select a Division</label>
+  <select id='division_id' name='division_id' type='text'>
+    <% @divisions.each() do |division| %>
+    <option value="<%= division.id()%>"> <%= division.name() %> </option>
+    <% end %>
+  </select>
+  <label for="name">Name of the employee:</label>
+  <input id="name" name="name" type="text">
+
+  <button class='button' type="submit">Add Employee</button>
+</form>
+
+
+<% if @divisions.any?() %>
+<p>Click on a division to see employees and/or edit information:</p>
+
+<ul>
+  <% @divisions.each do |division| %>
+  <li><a href="/divisions/<%= division.id() %>"><%= division.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>Hurry up and hire someone! No one works here!</p>
 <% end %>
