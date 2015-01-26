@@ -15,8 +15,7 @@ end
 
 post("/divisions") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
-  division = Division.new({:name => name, :id => nil})
-  division.save()
+  division = Division.create({:name => name, :id => nil})
   redirect("/")
 end
 
@@ -47,8 +46,7 @@ end
 post("/employees_index") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   division_id = params.fetch("division_id").to_i()
-  employee = Employee.new({:name => name, :division_id => division_id})
-  employee.save()
+  employee = Employee.create({:name => name, :division_id => division_id})
   @division = Division.find(division_id)
   redirect("/")
 end
@@ -56,8 +54,7 @@ end
 post("/employees") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   division_id = params.fetch("division_id").to_i()
-  employee = Employee.new({:name => name, :division_id => division_id})
-  employee.save()
+  employee = Employee.create({:name => name, :division_id => division_id})
   @division = Division.find(division_id)
   erb(:division_employees)
 end
@@ -95,8 +92,7 @@ post("/projects") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")
   employee_id = params.fetch("employee_id").to_i()
-  project = Project.new({:name => name, :description => description, :employee_id => employee_id})
-  project.save()
+  project = Project.create({:name => name, :description => description, :employee_id => employee_id})
   @employee = Employee.find(employee_id)
   erb(:employee_projects)
 end
@@ -111,10 +107,14 @@ patch("/projects/:id") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")
   @project = Project.find(params.fetch("id").to_i())
-  @project.update({:name => name})
-  @project.update({:description => description})
+  if params.fetch("name").split.map(&:capitalize).join(' ') != ""
+    @project.update({:name => name})
+  end
+  if params.fetch("description") != ""
+    @project.update({:description => description})
+  end
   employee_id = @project.employee_id()
-  url = "/employee/" + employee_id.to_s()
+  url = "/employees/" + employee_id.to_s()
   redirect(url)
 end
 
@@ -123,6 +123,6 @@ delete("/projects/:id") do
   @project.delete()
   @projects = Employee.all()
   division_id = @employee.division_id()
-  url = "/employee/" + employee_id.to_s()
+  url = "/employees/" + employee_id.to_s()
   redirect(url)
 end

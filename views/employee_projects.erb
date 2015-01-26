@@ -2,7 +2,7 @@
 <p><a href="/employees/<%= @employee.id() %>/edit">Edit or Delete Information for <%= @employee.name() %></a></p>
 <p><a href="/">Return to Main Page</a></p>
 
-<form action="/employees" method="post">
+<form action="/projects" method="post">
   <input id="employee_id" name="employee_id" type="hidden" value="<%= @employee.id() %>">
 
   <label for="name">Name of the project:</label>
@@ -16,7 +16,7 @@
 
 <% if @employee.projects().any?() %>
 <h3>Projects for <%= @employee.name() %>:</h3>
-<h5>Click on the project to edit it's information or remove it from <%= @employee.name() %>'s project list.</h5>
+<h5>Click on the project to edit its information or remove it from <%= @employee.name() %>'s project list.</h5>
 
 <ul>
   <% @employee.projects().each() do |project| %>
