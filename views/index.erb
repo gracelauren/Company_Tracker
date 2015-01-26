@@ -1,0 +1,7 @@
+
+
+<% @employees.each() do |employee| %>
+<li><%= employee.name %>
+  <a href="/employees/<% employee.id() %>/edit">
+    Update this employee's name</a></li>
+<% end %>
