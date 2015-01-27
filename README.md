@@ -8,7 +8,7 @@ Employee and Project Tracker DB is a website that uses a database and Sinatra to
 Installation
 ------------
 
-Install Train System DB by first cloning the repository.  
+Install Employee and Project Tracker DB by first cloning the repository.  
 ```
 $ git clone http://github.com/gracelauren/Company_Tracker.git
 ```
