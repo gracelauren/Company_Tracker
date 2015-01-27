@@ -23,6 +23,11 @@
   <button class='button' type="submit">Add Employee</button>
 </form>
 
+<br>
+<br>
+
+<p> Add a project to a division:</p>
+
 <form action="/projects_index" method="post">
   <label for="division_id">Select a Division</label>
   <select id='division_id' name='division_id' type='text'>
@@ -41,18 +46,24 @@
 
 
 <% if @divisions.any?() %>
-<p>Click on a division to see employees and/or edit information:</p>
+  <p>Click on a division to see employees and/or edit information:</p>
 
-<ul>
-  <% @divisions.each do |division| %>
-  <li><a href="/divisions/<%= division.id() %>"><%= division.name() %></a></li>
   <ul>
-    <% @projects.each do |project| %>
-    <li><a href="/projects/<%= project.id() %>"><%= project.name() %></a></li>
+    <% @divisions.each do |division| %>
+    <li><a href="/divisions/<%= division.id() %>"><%= division.name() %></a></li>
+    <% if @projects.any?() %>
+      <ul>
+        <% @projects.each do |project| %>
+        <li><a href="/projects/<%= project.id() %>">Project: <%= project.name() %></a></li>
+        <% end %>
+      </ul>
+      <% else %>
+      <p>Get to work! Start a project!</p>
+      <% end %>
     <% end %>
   </ul>
-  <% end %>
-</ul>
-<% else %>
-<p>Hurry up and hire someone! No one works here!</p>
+  <% else %>
+  <p>Hurry up and hire someone! No one works here!</p>
 <% end %>
+
+<br>

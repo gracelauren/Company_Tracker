@@ -18,7 +18,7 @@ Install all of the required gems:
 $ bundle install
 ```
 
-Start the database:
+Start the database in another tab of the terminal:
 ```
 $ postgres
 ```
@@ -55,5 +55,3 @@ License
 -------
 
 GNU GPL v2. Copyright 2015 Grace Mekarski and Frank Meza
-
-test

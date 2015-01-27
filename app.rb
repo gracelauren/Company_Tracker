@@ -4,11 +4,13 @@ require("sinatra/activerecord")
 also_reload("lib/**/*.rb")
 require("./lib/employee")
 require("./lib/division")
+require("./lib/project")
 require("pg")
 
 get("/") do
   @divisions = Division.all()
   @employees = Employee.all()
+  @projects = Project.all()
   erb(:index)
 end
 
@@ -89,7 +91,7 @@ delete("/employees/:id") do
 end
 
 
-post("/employees_index") do
+post("/project_index") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")
   division_id = params.fetch("division_id").to_i()
