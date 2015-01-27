@@ -23,7 +23,7 @@ Start the database:
 $ postgres
 ```
 
-Create the databases and tables by cd-ing into your Employee_Tracker-master folder then in the terminal run the following:
+Create the databases and tables by cd-ing into your Company_Tracker-master folder then in the terminal run the following:
 
 ```
 
