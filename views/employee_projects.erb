@@ -14,9 +14,10 @@
   <button class='button' type="submit">Add Project</button>
 </form>
 
-<% if @employee.projects().any?() %>
+
 <h3>Projects for <%= @employee.name() %>:</h3>
 <h5>Click on the project to edit its information or remove it from <%= @employee.name() %>'s project list.</h5>
+<% if @employee.projects().any?() %>
 
 <ul>
   <% @employee.projects().each() do |project| %>

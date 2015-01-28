@@ -3,7 +3,6 @@ class CreateProjects < ActiveRecord::Migration
     create_table(:projects) do |t|
       t.column(:name, :string)
       t.column(:description, :string)
-      t.column(:division_id, :integer)
     end
   end
 end

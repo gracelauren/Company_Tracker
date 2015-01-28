@@ -91,7 +91,7 @@ delete("/employees/:id") do
 end
 
 
-post("/project_index") do
+post("/projects_index") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")
   division_id = params.fetch("division_id").to_i()
@@ -104,8 +104,9 @@ post("/projects") do
   name = params.fetch("name").split.map(&:capitalize).join(' ')
   description = params.fetch("description")
   employee_id = params.fetch("employee_id").to_i()
-  project = Project.create({:name => name, :description => description, :employee_id => employee_id})
+  project = Project.create({:name => name, :description => description})
   @employee = Employee.find(employee_id)
+  @employee_projects = @employee.projects()
   erb(:employee_projects)
 end
 
